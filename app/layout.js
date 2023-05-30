@@ -1,8 +1,8 @@
 import MainNavigation from './components/layout/main-navigation';
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Oswald } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const oswald = Oswald({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Next.js blog',
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={oswald.className} suppressHydrationWarning={true}>
         <MainNavigation />
         <main>{children}</main>
       </body>
