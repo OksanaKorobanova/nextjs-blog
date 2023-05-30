@@ -17,4 +17,14 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params, searchParams }, parent) {
+  const { slug } = params;
+  const postData = getPostData(slug);
+
+  return {
+    title: postData.title,
+    description: postData.excerpt,
+  };
+}
+
 export default PostPage;

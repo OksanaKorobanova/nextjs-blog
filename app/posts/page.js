@@ -1,6 +1,11 @@
 import AllPosts from '../components/posts/all-posts';
 import { getAllPosts } from '../helpers/posts-helper';
 
+export const metadata = {
+  title: 'All posts page',
+  description: 'Here is a list of all posts',
+};
+
 function AllPostsPage() {
   const allPosts = getAllPosts();
   return <AllPosts posts={allPosts} />;
