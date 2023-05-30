@@ -1,6 +1,6 @@
 ---
 title: Post 1 title
-date: '30-05-2023'
+date: '2023-10-30'
 author: 'Oksana'
 image: '1.jpg'
 excerpt: 'Post 1 description'

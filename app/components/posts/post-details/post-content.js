@@ -1,21 +1,55 @@
+'use client';
 import ReactMarkdown from 'react-markdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import Image from 'next/image';
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
 
-const TEMP_DATA = {
-  title: 'Post 1',
-  image: '1.jpg',
-  date: '2023-02-10',
-  slug: 'post_1',
-  content: '# This is some post',
+const CodeComponent = (props) => {
+  const { code, language } = props;
+  return (
+    <SyntaxHighlighter language={language} style={docco}>
+      {code}
+    </SyntaxHighlighter>
+  );
 };
 
-function PostContent() {
-  const imagePath = `/images/posts/${TEMP_DATA.slug}/${TEMP_DATA.image}`;
+function PostContent({ post }) {
+  const imagePath = `/images/posts/${post.slug}/${post.image}`;
+
+  const customRenderers = {
+    p(paragraph) {
+      const { node } = paragraph;
+
+      if (node.children[0].tagName === 'img') {
+        const image = node.children[0];
+        console.log(image);
+        return (
+          <div className={classes.image}>
+            <Image
+              className={classes.image}
+              src={image.properties.src}
+              alt={image.properties.alt}
+              width={600}
+              height={300}
+            />
+          </div>
+        );
+      }
+      return <p>{paragraph.children}</p>;
+    },
+    code(code) {
+      const { className, children } = code;
+      const language = className.split('-')[1]; // className is something like language-js => We need the "js" part here
+      return <CodeComponent code={children} language={language} />;
+    },
+  };
+
   return (
     <article className={classes.content}>
-      <PostHeader title={TEMP_DATA.title} image={imagePath} />
-      <ReactMarkdown>{TEMP_DATA.content}</ReactMarkdown>
+      <PostHeader title={post.title} image={imagePath} />
+      <ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
     </article>
   );
 }
