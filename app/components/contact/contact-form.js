@@ -91,7 +91,7 @@ function ContactForm() {
     notification = {
       status: 'error',
       title: 'Error sending message...',
-      message: 'Your message is not sent',
+      message: requestError,
     };
   }
 
