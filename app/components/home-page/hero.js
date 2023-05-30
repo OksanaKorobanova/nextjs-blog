@@ -14,7 +14,7 @@ function Hero() {
       </div>
       <h1>Hi, I&apos;m Oksana</h1>
       <p>
-        A blog about Front end developments (React, Typescript, Next.js, etc.)
+        A blog about Front end development (React, Typescript, Next.js, etc.)
       </p>
     </section>
   );
