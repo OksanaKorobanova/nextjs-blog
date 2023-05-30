@@ -1,19 +1,8 @@
-'use client';
 import ReactMarkdown from 'react-markdown';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Image from 'next/image';
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
-
-const CodeComponent = (props) => {
-  const { code, language } = props;
-  return (
-    <SyntaxHighlighter language={language} style={atomDark}>
-      {code}
-    </SyntaxHighlighter>
-  );
-};
+import CodeComponent from './code-component';
 
 function PostContent({ post }) {
   const imagePath = `/images/posts/${post.slug}/${post.image}`;
@@ -24,7 +13,7 @@ function PostContent({ post }) {
 
       if (node.children[0].tagName === 'img') {
         const image = node.children[0];
-        console.log(image);
+
         return (
           <div className={classes.image}>
             <Image
