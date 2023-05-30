@@ -1,7 +1,7 @@
 'use client';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Image from 'next/image';
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
@@ -9,7 +9,7 @@ import classes from './post-content.module.css';
 const CodeComponent = (props) => {
   const { code, language } = props;
   return (
-    <SyntaxHighlighter language={language} style={docco}>
+    <SyntaxHighlighter language={language} style={atomDark}>
       {code}
     </SyntaxHighlighter>
   );
