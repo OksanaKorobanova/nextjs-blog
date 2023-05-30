@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
       <body className={oswald.className} suppressHydrationWarning={true}>
         <MainNavigation />
         <main>{children}</main>
+        <div id='notifications'></div>
       </body>
     </html>
   );
